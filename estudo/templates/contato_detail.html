@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{% block content%}
+
+<h3>Dados do Contato {{obj.nome}}</h3>
+
+<div class="container">
+
+{%include 'nav.html'%}
+
+<div class="row">
+    <div class="col-md-6 mt-4">
+        Nome:
+        <input type="text" value="{{obj.nome}}" id="" class="form-control bg-secondary text-white" readonly>
+        Email:
+        <input type="text" value="{{obj.email}}" id="" class="form-control bg-secondary text-white" readonly>
+        Assunto:
+        <input type="text" value="{{obj.assunto}}" id="" class="form-control bg-secondary text-white" readonly>
+        Mensagem:
+        <textarea name="" id="" class="form-control bg-secondary text-white" readonly>
+            {{obj.mensagem}}
+        </textarea> 
+    </div>
+</div>
+
+
+</div>
+
+
+{% endblock %}

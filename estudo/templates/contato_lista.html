@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{%block content%}
+    <h3>Lista de contatos</h3>
+
+    <form action="" method="get" class="row">
+        <div class="col-9">
+            <input type="text" name="pesquisa" id="form-control">
+        </div>
+
+        <div class="col-3">
+            <button type="submit" class="btn btn-primary">Pesquisa</button>
+        </div>
+    </form>
+
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Assunto</th>
+                    <th>Respondido ?</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in context['dados'] %}
+                <tr>
+                    <td>{{linha.nome}}</td>
+                    <td>{{linha.email}}</td>
+                    <td>{{linha.assunto}}</td>
+                    <td>
+                        {% if linha.responde == 0 %}
+                            NÃO
+                        {%else%}
+                            SIM
+                        {% endif %}</td>
+                        <td><a href="{{ url_for('contatoDatail',id=linha.id)}}">
+                            <img src="{{url_for('static',filename= 'img/btn.png')}}" alt="" style="width: 25px">
+                        </a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+   {%include 'nav.html'%}
+{%endblock%}
